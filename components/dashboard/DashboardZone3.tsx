@@ -228,7 +228,7 @@ function RecentTransactionsColumn({
               color: 'inherit',
               transition: 'background 0.15s ease',
             }}
-            className="recent-txn-row"
+            className="recent-txn-row hover:bg-light transition-colors"
           >
             <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
               <span
@@ -282,11 +282,7 @@ function RecentTransactionsColumn({
         </Link>
       </div>
 
-      <style jsx>{`
-        .recent-txn-row:hover {
-          background: #FAFAF7;
-        }
-      `}</style>
+
     </div>
   )
 }
@@ -315,7 +311,7 @@ export async function DashboardZone3(): Promise<JSX.Element> {
       }}
     >
       <div
-        className="zone3-grid"
+        className="grid grid-cols-1 md:grid-cols-3 gap-4"
         style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(3, 1fr)',
@@ -399,14 +395,7 @@ export async function DashboardZone3(): Promise<JSX.Element> {
         </article>
       </div>
 
-      {/* Responsive styles */}
-      <style jsx>{`
-        @media (max-width: 768px) {
-          .zone3-grid {
-            grid-template-columns: 1fr !important;
-          }
-        }
-      `}</style>
+
     </section>
   )
 }

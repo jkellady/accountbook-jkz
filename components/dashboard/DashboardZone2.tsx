@@ -57,28 +57,13 @@ export function DashboardZone2(): JSX.Element {
         marginBottom: '24px',
       }}
     >
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: '16px',
-          alignItems: 'stretch',
-        }}
-        className="dashboard-zone2-grid"
-      >
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-stretch">
         <SubscriptionRadar />
         <TaxPositionGlance />
         <OutstandingReceivables />
       </div>
 
-      {/* Mobile: collapse to single column */}
-      <style jsx>{`
-        @media (max-width: 768px) {
-          .dashboard-zone2-grid {
-            grid-template-columns: 1fr !important;
-          }
-        }
-      `}</style>
+
     </section>
   )
 }

@@ -18,7 +18,7 @@
 
 import React, { useState, useCallback, useRef } from "react";
 import type { CP500ScheduleResponse, CP500Instalment } from "@/lib/actions/taxPosition";
-import { formatMYR } from "@/lib/actions/taxPosition";
+import { formatMYR } from "@/lib/utils/formatting";
 
 // ---------------------------------------------------------------------------
 // Props

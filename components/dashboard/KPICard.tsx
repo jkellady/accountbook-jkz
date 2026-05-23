@@ -127,7 +127,7 @@ export function KPICard({
       }}
     >
       <article
-        className="kpi-card"
+        className="kpi-card hover:border-dark hover:-translate-y-px transition-all"
         style={{
           background: '#FFFFFF',
           border: '1px solid #E8E6E1',
@@ -183,15 +183,7 @@ export function KPICard({
         {/* Middle: Value */}
         <div style={{ marginBottom: '4px' }}>
           <span
-            className="kpi-value"
-            style={{
-              fontFamily: '"JetBrains Mono", "Fira Code", "Cascadia Code", monospace',
-              fontSize: '36px',
-              fontWeight: 700,
-              color: '#181818',
-              lineHeight: 1.2,
-              wordBreak: 'break-word',
-            }}
+            className="kpi-value text-[28px] md:text-4xl"
           >
             {value}
           </span>
@@ -324,18 +316,7 @@ export function KPICard({
         )}
       </article>
 
-      {/* Hover styles */}
-      <style jsx>{`
-        .kpi-card:hover {
-          border-color: #181818 !important;
-          transform: translateY(-1px);
-        }
-        @media (max-width: 768px) {
-          .kpi-value {
-            font-size: 28px !important;
-          }
-        }
-      `}</style>
+
     </Link>
   )
 }

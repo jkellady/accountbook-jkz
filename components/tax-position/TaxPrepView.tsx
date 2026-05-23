@@ -15,7 +15,7 @@
 import React, { useState, useMemo, useCallback } from "react";
 import type { TransactionRow } from "@/lib/supabase/database.types";
 import type { TaxPrepData } from "@/lib/actions/taxPosition";
-import { formatMYR } from "@/lib/actions/taxPosition";
+import { formatMYR } from "@/lib/utils/formatting";
 
 // ---------------------------------------------------------------------------
 // Props

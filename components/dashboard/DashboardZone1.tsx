@@ -58,13 +58,8 @@ export async function DashboardZone1(): Promise<JSX.Element> {
       }}
     >
       <div
-        className="zone1-grid"
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(4, 1fr)',
-          gap: '16px',
-          alignItems: 'stretch',
-        }}
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+        
       >
         {/* Card 1: Spend MTD */}
         <KPICard
@@ -117,19 +112,7 @@ export async function DashboardZone1(): Promise<JSX.Element> {
         />
       </div>
 
-      {/* Responsive styles */}
-      <style jsx>{`
-        @media (max-width: 1023px) {
-          .zone1-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-          }
-        }
-        @media (max-width: 768px) {
-          .zone1-grid {
-            grid-template-columns: 1fr !important;
-          }
-        }
-      `}</style>
+
     </section>
   )
 }

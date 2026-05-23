@@ -19,7 +19,7 @@
 
 import React, { useState, useCallback } from "react";
 import type { TaxForecast } from "@/lib/actions/taxPosition";
-import { formatMYR } from "@/lib/actions/taxPosition";
+import { formatMYR } from "@/lib/utils/formatting";
 
 // ---------------------------------------------------------------------------
 // Props

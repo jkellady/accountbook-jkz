@@ -18,6 +18,9 @@
  * />
  */
 
+"use client"
+
+
 import React, { useState, useCallback, useEffect } from 'react'
 import {
   CATEGORY_TAXONOMY,
