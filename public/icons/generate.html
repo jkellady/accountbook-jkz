@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zentra Icon Generator</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Inter, system-ui, sans-serif;
+      background: #FAFAF7;
+      padding: 40px;
+      color: #181818;
+    }
+    h1 { font-size: 24px; margin-bottom: 8px; }
+    p { color: #6B6B6B; margin-bottom: 32px; }
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 32px;
+    }
+    .icon-card {
+      background: #FFFFFF;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      text-align: center;
+    }
+    .icon-card h3 {
+      font-size: 14px;
+      color: #6B6B6B;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .canvas-wrap {
+      display: inline-block;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      margin-bottom: 16px;
+    }
+    .icon-192 { width: 192px; height: 192px; }
+    .icon-512 { width: 256px; height: 256px; }
+    .download-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #F37002;
+      color: #FFFFFF;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .download-btn:hover { background: #D55F00; }
+    .instructions {
+      margin-top: 40px;
+      padding: 20px;
+      background: #FFF3DD;
+      border-radius: 12px;
+      border-left: 4px solid #F37002;
+    }
+    .instructions h2 {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+    .instructions ol {
+      margin-left: 20px;
+      color: #6B6B6B;
+      line-height: 1.8;
+    }
+    .instructions code {
+      background: #FFFFFF;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Zentra PWA Icon Generator</h1>
+  <p>Render the source SVG at various sizes and export as PNG for the PWA manifest.</p>
+
+  <div class="icon-grid">
+    <!-- Standard 192x192 -->
+    <div class="icon-card">
+      <h3>Standard 192x192</h3>
+      <div class="canvas-wrap">
+        <canvas id="canvas-192" width="192" height="192"></canvas>
+      </div>
+      <br>
+      <button class="download-btn" onclick="downloadPNG('canvas-192', 'icon-192.png')">
+        Download icon-192.png
+      </button>
+    </div>
+
+    <!-- Standard 512x512 -->
+    <div class="icon-card">
+      <h3>Standard 512x512</h3>
+      <div class="canvas-wrap icon-512">
+        <canvas id="canvas-512" width="512" height="512"></canvas>
+      </div>
+      <br>
+      <button class="download-btn" onclick="downloadPNG('canvas-512', 'icon-512.png')">
+        Download icon-512.png
+      </button>
+    </div>
+
+    <!-- Maskable 192x192 -->
+    <div class="icon-card">
+      <h3>Maskable 192x192</h3>
+      <div class="canvas-wrap">
+        <canvas id="canvas-maskable-192" width="192" height="192"></canvas>
+      </div>
+      <br>
+      <button class="download-btn" onclick="downloadPNG('canvas-maskable-192', 'icon-maskable-192.png')">
+        Download icon-maskable-192.png
+      </button>
+    </div>
+
+    <!-- Maskable 512x512 -->
+    <div class="icon-card">
+      <h3>Maskable 512x512</h3>
+      <div class="canvas-wrap icon-512">
+        <canvas id="canvas-maskable-512" width="512" height="512"></canvas>
+      </div>
+      <br>
+      <button class="download-btn" onclick="downloadPNG('canvas-maskable-512', 'icon-maskable-512.png')">
+        Download icon-maskable-512.png
+      </button>
+    </div>
+  </div>
+
+  <div class="instructions">
+    <h2>How to generate icons</h2>
+    <ol>
+      <li>Right-click each canvas and choose <strong>"Save image as..."</strong>, OR click the download buttons.</li>
+      <li>Save all 4 PNG files to <code>public/icons/</code>.</li>
+      <li>The manifest at <code>app/manifest.ts</code> references these files.</li>
+      <li>These icons are used by iOS, Android, and desktop browsers for the install prompt and home screen.</li>
+    </ol>
+  </div>
+
+  <script>
+    /**
+     * SVG source for the Zentra "Z" monogram icon.
+     * Rendered onto canvases at multiple sizes for PNG export.
+     */
+    const SVG_SOURCE = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+      <defs>
+        <clipPath id="rounded">
+          <rect x="0" y="0" width="512" height="512" rx="64" ry="64"/>
+        </clipPath>
+      </defs>
+      <g clip-path="url(#rounded)">
+        <rect fill="#181818" x="0" y="0" width="512" height="512"/>
+        <text
+          x="256"
+          y="340"
+          text-anchor="middle"
+          font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+          font-size="280"
+          font-weight="700"
+          fill="#F37002"
+        >Z</text>
+      </g>
+    </svg>`;
+
+    const SVG_MASKABLE = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+      <rect fill="#181818" x="0" y="0" width="512" height="512"/>
+      <text
+        x="256"
+        y="340"
+        text-anchor="middle"
+        font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+        font-size="224"
+        font-weight="700"
+        fill="#F37002"
+      >Z</text>
+    </svg>`;
+
+    /**
+     * Renders an SVG string onto a canvas element.
+     * @param {string} canvasId - The ID of the target canvas element.
+     * @param {string} svgString - The SVG markup to render.
+     */
+    function renderToCanvas(canvasId, svgString) {
+      const canvas = document.getElementById(canvasId);
+      const ctx = canvas.getContext('2d');
+      const img = new Image();
+      const blob = new Blob([svgString], { type: 'image/svg+xml' });
+      const url = URL.createObjectURL(blob);
+
+      img.onload = function() {
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        URL.revokeObjectURL(url);
+      };
+      img.src = url;
+    }
+
+    /**
+     * Downloads the contents of a canvas as a PNG file.
+     * @param {string} canvasId - The ID of the source canvas.
+     * @param {string} filename - The desired filename for the download.
+     */
+    function downloadPNG(canvasId, filename) {
+      const canvas = document.getElementById(canvasId);
+      const link = document.createElement('a');
+      link.download = filename;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    }
+
+    // Render all icons on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      renderToCanvas('canvas-192', SVG_SOURCE);
+      renderToCanvas('canvas-512', SVG_SOURCE);
+      renderToCanvas('canvas-maskable-192', SVG_MASKABLE);
+      renderToCanvas('canvas-maskable-512', SVG_MASKABLE);
+    });
+  </script>
+</body>
+</html>

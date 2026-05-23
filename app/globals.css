@@ -1,0 +1,144 @@
+/* =============================================================================
+   JK Zentra Finance Cockpit — Global Styles
+   =============================================================================
+   Tailwind directives + Google Fonts + base styles + custom utilities.
+   Every component in the app relies on these foundations.
+   ============================================================================= */
+
+/* ---------------------------------------------------------------------------
+   Tailwind CSS directives
+   --------------------------------------------------------------------------- */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------------------------------------------------------------------
+   Google Fonts — Inter, Fraunces, JetBrains Mono
+   Loaded via next/font/google in layout.tsx; these are fallback declarations.
+   --------------------------------------------------------------------------- */
+
+/* ---------------------------------------------------------------------------
+   Base layer — applied to all elements
+   --------------------------------------------------------------------------- */
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-light font-sans text-dark;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  /* Respect user's motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Focus-visible styles for accessibility */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-orange;
+  }
+
+  /* Selection colour */
+  ::selection {
+    background-color: rgba(243, 112, 2, 0.2);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Component layer — reusable utility classes
+   --------------------------------------------------------------------------- */
+@layer components {
+  /* App container — max-width wrapper used on every page */
+  .app-container {
+    @apply mx-auto w-full max-w-app px-4;
+  }
+
+  /* Card style — white surface with subtle border */
+  .card {
+    @apply rounded-xl border border-border bg-white p-4 shadow-sm;
+  }
+
+  /* KPI card — used in dashboard Zone 1 */
+  .kpi-card {
+    @apply rounded-xl border border-border bg-white p-5 shadow-sm;
+  }
+
+  /* Page header — consistent page title area */
+  .page-header {
+    @apply mb-6 flex flex-col gap-1;
+  }
+
+  .page-header h1 {
+    @apply text-xl font-bold tracking-tight text-dark;
+  }
+
+  .page-header p {
+    @apply text-sm text-grey;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Utility layer — single-purpose helper classes
+   --------------------------------------------------------------------------- */
+@layer utilities {
+  /* Tabular numbers for monetary amounts — ensures aligned columns */
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Hide scrollbar — used in sidebar, carousels, etc. */
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Text clamp utilities — multi-line ellipsis */
+  .line-clamp-1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Safe area inset helpers for mobile PWA */
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .pt-safe {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+
+  /* Touch action utilities */
+  .touch-manipulation {
+    touch-action: manipulation;
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "name": "jk-zentra-finance-cockpit",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Smart receipt tracking and tax management for Malaysian sole proprietors",
+  "author": "JK Zentra",
+  "license": "UNLICENSED",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^3.9.1",
+    "@supabase/ssr": "^0.5.2",
+    "@supabase/supabase-js": "^2.47.10",
+    "autoprefixer": "^10.4.20",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "date-fns": "^4.1.0",
+    "jszip": "^3.10.1",
+    "jspdf": "^2.5.2",
+    "jspdf-autotable": "^3.8.4",
+    "lucide-react": "^0.469.0",
+    "next": "^15.1.3",
+    "papaparse": "^5.5.1",
+    "postcss": "^8.4.49",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-hook-form": "^7.54.2",
+    "react-hot-toast": "^2.5.1",
+    "tailwind-merge": "^2.6.0",
+    "tailwindcss": "^3.4.17",
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/jszip": "^3.4.1",
+    "@types/node": "^22.10.5",
+    "@types/papaparse": "^5.3.15",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
+    "eslint": "^9.17.0",
+    "eslint-config-next": "^15.1.3",
+    "typescript": "^5.7.2"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  }
+}
