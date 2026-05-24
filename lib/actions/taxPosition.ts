@@ -163,17 +163,6 @@ function getMonthsElapsed(year: number): number {
 }
 
 /**
- * Format a minor-unit amount as MYR string for display.
- * e.g. 32680 → "326.80"
- *
- * @param minor - Amount in minor units (sen).
- * @returns Formatted string with 2 decimal places.
- */
-function fmtMinor(minor: number): string {
-  return (minor / 100).toFixed(2);
-}
-
-/**
  * Resolve the taxable entity ID from an optional slug filter.
  * If slug is provided, returns the matching entity.
  * If no slug, returns the JK Zentra entity (the taxable entity).
@@ -896,21 +885,6 @@ export async function updateTaxSettings(updates: {
   }
 
   return { success: true };
-}
-
-// ---------------------------------------------------------------------------
-// Re-export format helper for client use
-// ---------------------------------------------------------------------------
-
-/**
- * Format a minor-unit amount as a display string.
- * e.g. 32680 → "326.80"
- *
- * @param minor - Amount in minor units (sen).
- * @returns Formatted string with 2 decimal places.
- */
-export function formatMinor(minor: number): string {
-  return fmtMinor(minor);
 }
 
 /**
