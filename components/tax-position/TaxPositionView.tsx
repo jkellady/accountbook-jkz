@@ -31,8 +31,8 @@ import {
   getCP500Schedule,
   getTaxPrepData,
   markCP500Paid,
+  formatMYR,
 } from "@/lib/actions/taxPosition";
-import { formatMYR } from "@/lib/utils/formatting";
 import { TaxVerdict } from "./TaxVerdict";
 import { ForecastMath } from "./ForecastMath";
 import { CP500Schedule } from "./CP500Schedule";

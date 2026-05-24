@@ -887,13 +887,4 @@ export async function updateTaxSettings(updates: {
   return { success: true };
 }
 
-/**
- * Format a minor-unit amount as MYR currency string.
- * e.g. 32680 → "RM 326.80"
- *
- * @param minor - Amount in minor units (sen).
- * @returns Formatted MYR string.
- */
-export function formatMYR(minor: number): string {
-  return `RM ${fmtMinor(minor)}`;
-}
+
