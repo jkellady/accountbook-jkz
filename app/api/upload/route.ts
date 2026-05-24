@@ -19,7 +19,8 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { createServerClient, type CookieOptions } from "@supabase/ssr";
-import type { Database } from "@/lib/supabase/database.types";import {
+import type { Database } from "@/types/supabase";
+import {
   STORAGE_BUCKET,
   MAX_FILE_SIZE,
   ACCEPTED_MIME_TYPES,

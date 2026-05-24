@@ -1,5 +1,5 @@
 import { type Metadata } from 'next'
-import { StackRadarView } from '@/components/stack-radar/StackRadarView'
+import StackRadarView from '@/components/stack-radar/StackRadarView'
 
 export const metadata: Metadata = {
   title: 'Stack Radar | Zentra Finance Cockpit',
